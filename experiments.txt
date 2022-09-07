@@ -1,8 +1,8 @@
---resolution high --num_classes 10 --device cpu --batch_size 16
---resolution low --num_classes 10 --device cpu --batch_size 16
---resolution high --num_classes 3 --device cpu --batch_size 16
---resolution low --num_classes 3 --device cpu --batch_size 16
---resolution high --num_classes 10 --device gpu --batch_size 16
---resolution low --num_classes 10 --device gpu --batch_size 16
---resolution high --num_classes 3 --device gpu --batch_size 16
---resolution low --num_classes 3 --device gpu --batch_size 16
+--resolution high --num_classes 10 --device cpu --batch_size 128
+--resolution low --num_classes 10 --device cpu --batch_size 128
+--resolution high --num_classes 3 --device cpu --batch_size 128
+--resolution low --num_classes 3 --device cpu --batch_size 128
+--resolution high --num_classes 10 --device gpu --batch_size 128
+--resolution low --num_classes 10 --device gpu --batch_size 128
+--resolution high --num_classes 3 --device gpu --batch_size 128
+--resolution low --num_classes 3 --device gpu --batch_size 128

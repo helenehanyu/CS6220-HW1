@@ -23,7 +23,7 @@ def main(args):
 
     trainer = Trainer(
         accelerator="cpu" if args.device == "cpu" else "gpu",
-        devices=1 if torch.cuda.is_available() else None,  # limiting got iPython runs
+        devices=1 if args.device == "gpu" else None,  # limiting got iPython runs
         max_epochs=10,
         callbacks=[TQDMProgressBar(refresh_rate=20),timer],
         logger=CSVLogger(save_dir=f"logs/{args.resolution}_resolution_{args.num_classes}_classes_{args.device}_batchsize{args.batch_size}/"),
@@ -32,7 +32,7 @@ def main(args):
     test_results = trainer.test()
     results = test_results[0]
     results['training_time'] = timer.time_elapsed("train")
-    with open("logs/{args.resolution}_resolution_{args.num_classes}_classes_{args.device}_batchsize{args.batch_size}/results.json", "w") as outfile:
+    with open(f"logs/{args.resolution}_resolution_{args.num_classes}_classes_{args.device}_batchsize{args.batch_size}/results.json", "w") as outfile:
         json.dump(results, outfile, indent=4, sort_keys=False)
 
 if __name__ == '__main__':
