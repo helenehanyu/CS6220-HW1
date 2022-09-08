@@ -37,5 +37,29 @@ any integer number of batch size
 MNIST dataset with 7000 images. Each image has 28 $\times$ 28 pixels. Total size of compressed file is 66 MB on disk. 
 
 ![sample images](imgs/sample_imgs.png "sample images")
+
+A simple MLP is used. The model consists 4 layers of FCNN. The first layer is the input layer which corresponds to the number of pixels of the image, the second and third layers are fixed of hidden dimension of 64, the last layer is the number of classes the models are trying to classify. Batch size if a hyperparameter to test, and it runs 10 epoch on a learning rate of 1e-4. I use the same configuration for the tasks except changing the input and output dimention to corresponding dataset.
+
+### output analysis
+I am using a NVIDIA GeForce RTX 2080 Ti 7.5 to run the experiments.
+
+| Resolution  | Number of Classes | Device| Training Time (s) |Test accuracy (%)|
+| ----------- | ----------- |-------------------|---------------|-------------|
+| High        | 3         |CPU   |348|99.36|
+| High        | 3         |GPU  | 360|99.36|
+| High | 10 |CPU | 825 |97.10|
+|High | 10 |GPU | 804.75|97.18|
+|Low | 3 | CPU | 327|99.27|
+|Low |3 |GPU| 364 | 99.43|
+|Low |10 |CPU|739 | 95.99|
+|Low |10 | GPU | 812 |96.09|
+
+* For the same task (same resolution of image and same number of classes), using CPU and GPU to train does not impact accuracy. 
+* For the same task, the training time of CPU is shorter than GPU. But for complex task (10 ckasses, high resolution), GPU is faster than CPU.
+* Training on low resolution image tends to train a little bit faster due to small number of learnable parameters, but the accuracy decreases. 
+* As the number of classes increases, it is harder for classifier to make the correct decision. 
+
+
+
 ## references
 The model mostly follows [this](https://pytorch-lightning.readthedocs.io/en/stable/notebooks/lightning_examples/mnist-hello-world.html) tutorial.
