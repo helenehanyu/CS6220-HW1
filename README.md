@@ -32,6 +32,9 @@ any integer number of batch size
 ## Sample argument
 
 `python3 experiments.py --resolution low --num_classes 3 --device gpu --batch_size 128`
+
+it should produce something like this when it is running
+![](imgs/running.png)
 ## Deliverable
 ### input analysis
 MNIST dataset with 7000 images. Each image has 28 $\times$ 28 pixels. Total size of compressed file is 66 MB on disk. 
